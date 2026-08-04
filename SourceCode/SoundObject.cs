@@ -21,9 +21,9 @@ public class SoundObject : ScriptableObject
     [Range(0, 255)] public int audioPriority;
     
     [Range(0f, 1f)] public float baseVolume;
-    [Range(0f, 0.5f)] public float randomVolume;
+    [Range(0f, 1f)] public float randomVolume;
     [Range(0f, 2f)] public float basePitch; 
-    [Range(0f, 0.5f)] public float randomPitch;
+    [Range(0f, 1f)] public float randomPitch;
 
     [Tooltip("True to continue playing until stopped by external source, False to destroy the audio source after it finishes playing once.")]
     public bool loopAudio;
@@ -69,10 +69,21 @@ public class SoundObject : ScriptableObject
 
         //volume is clipped in between 0 and 1
         script.dynamicVolume = dynamicVolume;
-        script.sourceVolume = baseVolume * (1 + UnityEngine.Random.Range(-randomVolume * 0.5f, randomVolume * 0.5f));
+        script.sourceVolume = baseVolume;
+
+        if(randomVolume != 0){
+
+            script.sourceVolume *= 1 + UnityEngine.Random.Range(-randomVolume * 0.5f, randomVolume * 0.5f);  
+        }
 
         script.ignoreTimescale = ignoreTimescale;
-        script.sourcePitch = basePitch * (1 + UnityEngine.Random.Range(-randomPitch * 0.5f, randomPitch * 0.5f));
+        script.sourcePitch = basePitch;
+
+        if(randomPitch != 0){
+
+            script.sourcePitch *= 1 + UnityEngine.Random.Range(-randomPitch * 0.5f, randomPitch * 0.5f);
+        }
+        
         
         audio.clip = audioClip;
         audio.loop = loopAudio;
