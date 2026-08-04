@@ -73,7 +73,7 @@ public class SoundObject : ScriptableObject
 
         if(randomVolume != 0){
 
-            script.sourceVolume *= 1 + UnityEngine.Random.Range(-randomVolume * 0.5f, randomVolume * 0.5f);  
+            script.sourceVolume += UnityEngine.Random.Range(-randomVolume * 0.5f, randomVolume * 0.5f);  
         }
 
         script.ignoreTimescale = ignoreTimescale;
@@ -81,7 +81,7 @@ public class SoundObject : ScriptableObject
 
         if(randomPitch != 0){
 
-            script.sourcePitch *= 1 + UnityEngine.Random.Range(-randomPitch * 0.5f, randomPitch * 0.5f);
+            script.sourcePitch += UnityEngine.Random.Range(-randomPitch * 0.5f, randomPitch * 0.5f);
         }
         
         
