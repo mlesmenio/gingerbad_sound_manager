@@ -24,7 +24,7 @@ Script which handles the dynamic volume/pitch changes and the destruction of the
 
 For a practical example on how to use this this asset, please consult the sample scene and the resources available there.
 
-To play a clip create a SoundObject from the Unity asset menu and customize its fields. Then you can import this object to any script and call Play() or PlayFromUI() to generate audio at runtime:
+To play a clip create a SoundObject from the Unity asset menu and customize its fields. Then you can import this object to any script or UI element, and call Play() or PlayFromUI() to generate audio at runtime:
 
 ### Play()
 
