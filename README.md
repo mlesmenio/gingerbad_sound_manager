@@ -9,14 +9,14 @@ Generates a gameObject containing a "SoundScript" and its audioSource on runtime
 | Argument | Type | Required | Default | Description |
 |----------|------|----------|---------|-------------|
 | `ignoreTimescale` | Bool | ✓ | F | If false, the pitch is dynamically scaled with the value of the timescale |
-| `baseVolume` | int | No | `100` | Number of training epochs |
-| `--batch-size` | int | No | `32` | Batch size |
+| `baseVolume` | Float | ✓ | `0` | Scaled volume of the clip to be played |
+| `randomVolume` | Float | No | `0` | The volume becomes baseVolume + ] - randomVolume/2, baseVolume + randomVolume/2] |
 
 "settings3D" - This field allows instantiating the gameObject as a copy of a prefab. This prefab is required to have at leastan audioSource component for proper functioning. The fields which are included in the "Sound" will be overwritten but all the other ones will be kept. The idea was that this logic would allow easily including consistent 3D settings across different sounds (shown in the sample scene). In practice this field can also be used to instantiate the audioSource as part of a complex object, albeit this might require additional logic. Leave this field empty to generate 2D sounds.
 
 "dynamicVolume" - This field uses auxiliary code "FloatVariable" to allow for dynamic updates to the volume of the audioSources after they have been instantiated. This is useful, for example, if you wish to allow the player to change the in-game volume. You can also leave this field empty to ignore this logic.
 
-"baseVolume/randomVolume" - The baseVolume is used as the center of an uniform distribution with the interval ]-randomVolume/2, randomVolume/2]. Bear in mind that Unity clips the volume between 0 and 1.
+"baseVolume/randomVolume" - The baseVolume is used as the center of an uniform distribution with the interval . Bear in mind that Unity clips the volume between 0 and 1.
 
 "basePitch/randomPitch" - Same logic as the "baseVolume/randomVolume", except Unity only clips the pitch at 0.
 
